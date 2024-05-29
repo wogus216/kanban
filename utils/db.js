@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { errors } = require('./errors');
-
+// 왜이러냐
 // 주석 해제 시 사용
 // const config = require('../config/dbConfig');
 // const cwr = require('./createWebResp'); // 주석 해제
