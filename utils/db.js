@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
-// const config = require('../config/dbConfig');
-// const cwr = require('./createWebResp'); // 주석 해제
 const { errors } = require('./errors');
 
-// const MONGODB_NAME = config.mongodb_name || 'kanban'; // 디폴트값 설정
+// 주석 해제 시 사용
+// const config = require('../config/dbConfig');
+// const cwr = require('./createWebResp'); // 주석 해제
+
+// 주석 해제 시 사용
+// const MONGODB_NAME = config.mongodb_name || 'kanban';
 // const MONGODB_USER = config.mongodb_user;
 // const MONGODB_PASSWORD = config.mongodb_password;
-// const MONGODB_URL = config.mongodb_url || 'localhost:27017/'; // 디폴트값 설정
+// const MONGODB_URL = config.mongodb_url || 'localhost:27017/';
 
 const connect = async (DB_URI) => {
   if (mongoose.connection.readyState) {
@@ -15,6 +18,7 @@ const connect = async (DB_URI) => {
     try {
       const connection = await mongoose.connect(DB_URI, {
         useUnifiedTopology: true,
+        useNewUrlParser: true,
         dbName: 'kanban', // 데이터베이스 이름 명시
       });
       console.log('Success DB Connection');
@@ -27,7 +31,8 @@ const connect = async (DB_URI) => {
 };
 
 exports.connectDB = async () => {
-  // const DB_URI = `mongodb://${MONGODB_URL}`;
+  // 주석 해제 시 사용
+  // const DB_URI = `mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_URL}/${MONGODB_NAME}`;
   const DB_URI = `mongodb://localhost:27017/kanban`; // DB URI 확인
   console.log('DB URI:', DB_URI);
 
@@ -45,7 +50,8 @@ exports.tryConDB = async (req, res, next) => {
     await exports.connectDB();
     next();
   } catch (error) {
-    // cwr.errorWebResp(res, 500, errors.E11000, error); // 주석 해제 시 필요
+    // 주석 해제 시 사용
+    // cwr.errorWebResp(res, 500, errors.E11000, error);
     res.status(500).json({ message: 'Database connection error' });
   }
 };
