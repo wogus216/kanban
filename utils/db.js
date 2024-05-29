@@ -15,7 +15,7 @@ const connect = async (DB_URI) => {
     try {
       const connection = await mongoose.connect(DB_URI, {
         useUnifiedTopology: true,
-        dbName: MONGODB_NAME, // 데이터베이스 이름 명시
+        dbName: kanban, // 데이터베이스 이름 명시
       });
       console.log('Success DB Connection');
       return connection;
@@ -27,7 +27,8 @@ const connect = async (DB_URI) => {
 };
 
 exports.connectDB = async () => {
-  const DB_URI = `mongodb://${MONGODB_URL}`;
+  // const DB_URI = `mongodb://${MONGODB_URL}`;
+  const DB_URI = `mongodb://localhost:27017/kanban`; // DB URI 확인
   console.log('DB URI:', DB_URI);
 
   try {
