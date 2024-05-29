@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const config = require('../config/dbConfig');
+
 // const cwr = require('./createWebResp'); // 주석 해제
 const { errors } = require('./errors');
+const { config } = require('dotenv');
 
 const MONGODB_NAME = config.mongodb_name || 'kanban'; // 디폴트값 설정
 const MONGODB_USER = config.mongodb_user;
