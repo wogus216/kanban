@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const config = require('../config/dbConfig');
+// const config = require('../config/dbConfig');
 // const cwr = require('./createWebResp'); // 주석 해제
 const { errors } = require('./errors');
 
-const MONGODB_NAME = config.mongodb_name || 'kanban'; // 디폴트값 설정
-const MONGODB_USER = config.mongodb_user;
-const MONGODB_PASSWORD = config.mongodb_password;
-const MONGODB_URL = config.mongodb_url || 'localhost:27017/'; // 디폴트값 설정
+// const MONGODB_NAME = config.mongodb_name || 'kanban'; // 디폴트값 설정
+// const MONGODB_USER = config.mongodb_user;
+// const MONGODB_PASSWORD = config.mongodb_password;
+// const MONGODB_URL = config.mongodb_url || 'localhost:27017/'; // 디폴트값 설정
 
 const connect = async (DB_URI) => {
   if (mongoose.connection.readyState) {
@@ -15,7 +15,7 @@ const connect = async (DB_URI) => {
     try {
       const connection = await mongoose.connect(DB_URI, {
         useUnifiedTopology: true,
-        dbName: kanban, // 데이터베이스 이름 명시
+        dbName: 'kanban', // 데이터베이스 이름 명시
       });
       console.log('Success DB Connection');
       return connection;
